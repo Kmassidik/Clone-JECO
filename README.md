@@ -27,12 +27,12 @@ Sebelum Anda dapat menjalankan server, pastikan Anda sudah menyiapkan lingkungan
 4. **Seeder**: Untuk mengisi data awal, jalankan seeder:
 
     ```bash
-    npm sequelize db:seed:all
+        npm sequelize db:seed:all
     ```
 5. **Menjalankan Server**:jalankan server dengan perintah berikut:
     ```bash
-    npm start
-    Server akan berjalan pada port default 3000. Anda dapat mengaksesnya melalui http://localhost:3000.
+        npm start
+        Server akan berjalan pada port default 3000. Anda dapat mengaksesnya melalui http://localhost:3000.
     ```
 
 ## REST API
