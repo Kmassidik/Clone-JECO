@@ -1,0 +1,21 @@
+.heroslider img {
+  border-radius: 1%;
+}
+/* Media Query for tablets */
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  /* Add your tablet-specific styles here */
+  .heroslider img {
+    height: 550px;
+  }
+  .heroslider {
+    width: 80vh;
+  }
+}
+
+/* Media Query for PCs */
+@media screen and (min-width: 1024px) {
+  /* Add your PC-specific styles here */
+  .heroslider img {
+    height: 80vh;
+  }
+}
