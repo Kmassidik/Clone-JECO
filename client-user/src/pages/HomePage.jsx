@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSlide from "../components/Hero/HeroSlide";
@@ -9,23 +9,33 @@ import { NavLink } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
-  const [isLoading, setLoading] = useState(false); // Changed initial state to false
+  const [isLoading, setLoading] = useState(false);
+  const elementRef = useRef(null);
 
   useEffect(() => {
-    // You can use GSAP animations with ScrollTrigger here
-    gsap.from(".animate-me", {
-      opacity: 0,
-      y: 100,
-      duration: 1,
+    const element = elementRef.current;
+
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".animate-me",
-        start: "top center", // Adjust this as needed
-        end: "bottom center", // Adjust this as needed
-        scrub: true, // Makes the animation smooth during scrolling
+        trigger: element,
+        start: "top center",
+        toggleActions: "play none none none", // Play animation when it reaches the center of the viewport
       },
     });
 
-    // Simulate loading delay (you can remove this if not needed)
+    // Define the animations
+    tl.to(element, {
+      opacity: 0.5,
+      transform: "matrix(1.3, 0, 0, 1.3, 0, 0)",
+      duration: 1,
+    });
+
+    tl.to(element, {
+      opacity: 1,
+      transform: "matrix(1, 0, 0, 1, 0, 0)",
+      duration: 1,
+    });
+
     setTimeout(() => {
       setLoading(false);
     }, 1500);
@@ -39,7 +49,7 @@ export default function HomePage() {
     <>
       <HeroSlide />
       {/* go to all product */}
-      <div className='container mx-auto my-16 text-center animate-me'>
+      <div className='container mx-auto my-16 text-center'>
         <p className='md:px-72 text-xl tracking-wider lg:text-center'>
           What’s your mood? We’ve got exceptionally handcrafted donuts, premium
           sourced Arabica coffee, and other crave-inducing treats prepared just
@@ -49,13 +59,14 @@ export default function HomePage() {
           <NavLink to='/menu'>EXPLORE OUR MENU</NavLink>
         </button>
       </div>
-      {/* Use ScrollTrigger for animations */}
-      <div className='w-full'>
+      <div
+        className='w-full'
+        style={{ position: "relative", overflow: "hidden", height:"80vh"}}>
         <img
-          className='h-48 w-full object-cover md:h-full animate-me'
+          ref={elementRef}
+          style={{ minWidth: "100%", height: "auto", objectFit: "fill" }}
           src='https://api.vold.dev.fleava.com/pictures/5b39cd517169294aba251f43/images/thumbnails/large_8d8f458b-1861-4f79-bec0-0d6af53464f5.jpg'
           alt=''
-          data-scrolltrigger='{"start": "top center", "end": "bottom center", "scrub": true}'
         />
       </div>
     </>

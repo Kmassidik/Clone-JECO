@@ -37,14 +37,14 @@ export default function CardDonutView({
         <div className="relative">
           <img src={imgUrl} alt="Donut" className="w-auto rounded" />
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 opacity-0 transition-opacity duration-300 hover:opacity-100">
-            <div className="text-white text-center">
+            <div className="text-white text-center px-5">
               <p>{description}</p>
             </div>
           </div>
         </div>
-        <h3 className="text-2xl font-bold mb-10 text-orange-800 inline-block border-b-2 border-orange-500 px-4 uppercase mt-4 custom-card-text">
+        <h3 className="text-xl font-bold mb-10 text-orange-800 inline-block border-b-2 border-orange-300 px-4 uppercase mt-4 custom-card-text">
           <NavLink to={`/detail/${id}`} className="no-underline text-orange-800">
-            {name}
+          <p>{name}</p>
           </NavLink>
         </h3>
       </div>

@@ -20,8 +20,7 @@ import {
   HANDLE_ERROR_ADMIN
 } from "./actionType";
 
-// let baseUrl = "http://localhost:3000/api";
-let baseUrl = "https://api.devkmassidik.online/api";
+let baseUrl = "http://localhost:3000/api";
 
 // authentication
 export const loginLoading = () => ({
@@ -149,6 +148,7 @@ export const addAdmin = (value) => {
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
+          access_token: localStorage.getItem("access_token"),
         },
         body: JSON.stringify({
           username,

@@ -10,8 +10,7 @@ import {
   FETCH_DETAIL_ITEM_ERROR,
 } from "./actionType";
 
-// let baseUrl = "http://localhost:3000/public";
-let baseUrl = "https://api.devkmassidik.online/public";
+let baseUrl = "http://localhost:3000/public"
 
 export const fetchItemsLoading = () => ({
   type: FETCH_ITEM_LOADING,

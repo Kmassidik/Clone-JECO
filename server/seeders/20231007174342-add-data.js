@@ -24,6 +24,32 @@ module.exports = {
         updatedAt: new Date(),
       },
     ]);
+
+    // categories
+    let categories = require("./categories.json");
+    categories = categories.map((e) => {
+      (e.createdAt = new Date()), (e.updatedAt = new Date());
+      return e;
+    });
+    await queryInterface.bulkInsert("Categories", categories);
+
+    // items
+    let items = require("./items.json");
+    items = items.map((e) => {
+      (e.authorId = 1),
+        (e.createdAt = new Date()),
+        (e.updatedAt = new Date());
+      return e;
+    });
+    await queryInterface.bulkInsert("Items", items);
+
+    // ingredients
+    let ingredients = require("./ingredients.json");
+    ingredients = ingredients.map((e) => {
+      (e.createdAt = new Date()), (e.updatedAt = new Date());
+      return e;
+    });
+    await queryInterface.bulkInsert("Ingredients", ingredients);
   },
 
   async down(queryInterface, Sequelize) {

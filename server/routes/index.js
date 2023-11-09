@@ -8,9 +8,10 @@ routes.get("/", (req, res, next) => {
 });
 
 routes.post("/login", ApiController.login);
-routes.post("/add-admin", ApiController.addNewAdmin);
 
 routes.use(authentication)
+
+routes.post("/add-admin", ApiController.addNewAdmin);
 
 routes.get("/category",ApiController.getAllCategory);
 routes.post("/category",ApiController.addNewCategory);
